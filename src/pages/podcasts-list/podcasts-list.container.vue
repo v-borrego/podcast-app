@@ -1,0 +1,31 @@
+<template>
+  <podcasts-list-component :list="list"/>
+</template>
+
+<script lang="ts">
+import Vue from "vue";
+import PodcastsListComponent from "./podcasts-list.component.vue";
+import { Api } from "../../api";
+import { ViewModel } from "./model";
+import { mapPodcastApiModelToViewModel } from "./podcasts-list.mapper";
+
+export default Vue.extend({
+  name: "PodcastsListContainer",
+  components: {
+    PodcastsListComponent
+  },
+  data: function() {
+    return {
+      message: "Hello from podcasts list",
+      list: new Array<ViewModel.Podcast>()
+    };
+  },
+  created() {
+    Api.getPodcastsFeed().then(response => {
+      this.list = response.feed.entry.map(x =>
+        mapPodcastApiModelToViewModel(x)
+      );
+    });
+  }
+});
+</script>
