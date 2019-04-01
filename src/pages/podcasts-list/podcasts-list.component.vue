@@ -17,9 +17,9 @@
 import Vue, { PropOptions } from "vue";
 import { FilterBar } from "./components";
 import { PodcastCard } from "./components";
-
 import { ViewModel } from "./model";
 import { router, moduleRoutes } from "../../router";
+import { filterPodcasts } from "./podcasts-list.business";
 
 export default Vue.extend({
   name: "PodcastsListComponent",
@@ -45,9 +45,7 @@ export default Vue.extend({
   computed: {
     filteredList: function() {
       return this.searchText
-        ? this.list.filter(podcast =>
-            podcast.title.toUpperCase().includes(this.searchText.toUpperCase())
-          )
+        ? filterPodcasts(this.list, this.searchText)
         : this.list;
     }
   }
