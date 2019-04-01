@@ -9,8 +9,8 @@ export interface FeedResponse {
       };
     };
     entry: Podcast[];
-    updated: {
-      label: Date;
+    upstringd: {
+      label: string;
     };
     rights: {
       label: string;
@@ -59,7 +59,7 @@ export interface Podcast {
   "im:price": {
     label: string;
     attributes: {
-      amount: number;
+      amount: string;
       currency: string;
     };
   };
@@ -93,14 +93,14 @@ export interface Podcast {
   };
   category: {
     attributes: {
-      "im:id": number;
+      "im:id": string;
       term: string;
       scheme: string;
       label: string;
     };
   };
-  "im:releaseDate": {
-    label: Date;
+  "im:releasestring"?: {
+    label: string;
     attributes: {
       label: string;
     };

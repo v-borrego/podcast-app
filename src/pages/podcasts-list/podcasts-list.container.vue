@@ -16,7 +16,6 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      message: "Hello from podcasts list",
       list: new Array<ViewModel.Podcast>()
     };
   },
