@@ -5,7 +5,7 @@
 <script lang="ts">
 import Vue from "vue";
 import PodcastsListComponent from "./podcasts-list.component.vue";
-import { Api } from "../../api";
+import { getPodcastsList } from "./api-bridge";
 import { ViewModel } from "./model";
 import { mapPodcastApiModelToViewModel } from "./podcasts-list.mapper";
 
@@ -20,10 +20,8 @@ export default Vue.extend({
     };
   },
   created() {
-    Api.getPodcastsFeed().then(response => {
-      this.list = response.feed.entry.map(x =>
-        mapPodcastApiModelToViewModel(x)
-      );
+    getPodcastsList().then(list => {
+      this.list = list;
     });
   }
 });
