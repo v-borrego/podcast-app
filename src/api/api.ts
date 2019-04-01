@@ -4,7 +4,7 @@ import { FeedResponse } from "./api.model";
 const baseUrl =
   "https://cors-anywhere.herokuapp.com/https://itunes.apple.com/us/rss";
 
-const get = <T>(endpoint: string, params?: any): Promise<T> => {
+const get = <T>(endpoint: string): Promise<T> => {
   return new Promise((resolve, reject) => {
     try {
       axios

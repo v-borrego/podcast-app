@@ -19,7 +19,7 @@ import { FilterBar } from "./components";
 import { PodcastCard } from "./components";
 
 import { ViewModel } from "./model";
-import { router } from "../../router";
+import { router, moduleRoutes } from "../../router";
 
 export default Vue.extend({
   name: "PodcastsListComponent",
@@ -37,7 +37,7 @@ export default Vue.extend({
     },
     onSelect: function(podcast: ViewModel.Podcast) {
       router.push({
-        name: "Detail",
+        name: moduleRoutes.podcastDetail.name,
         params: { id: podcast.id.toString() }
       });
     }
