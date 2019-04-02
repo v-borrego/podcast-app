@@ -1,3 +1,3 @@
-import PodcastDetail from "./podcast-detail.component.vue";
+import PodcastDetail from "./podcast-detail.container.vue";
 
 export { PodcastDetail };
