@@ -11,6 +11,7 @@ import Vue, { PropOptions } from "vue";
 import PodcastDetailComponent from "./podcast-detail.component.vue";
 import { getPodcastDetail } from "./api-bridge";
 import { ViewModel } from "./model";
+import { router } from "../../router";
 export default Vue.extend({
   name: "PodcastDetail",
   components: {
@@ -24,10 +25,14 @@ export default Vue.extend({
     id: {} as PropOptions<number>
   },
   created() {
-    getPodcastDetail(this.id)().then(podcast => {
-      this.loading = false;
-      this.podcast = podcast;
-    });
+    getPodcastDetail(this.id)()
+      .then(podcast => {
+        this.loading = false;
+        this.podcast = podcast;
+      })
+      .catch(e => {
+        router.go(-1);
+      });
   }
 });
 </script>

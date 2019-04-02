@@ -4,7 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js",
+    "start": "run-p start:server start:dev",
+    "start:dev": "webpack-dev-server --config webpack.config.js",
+    "start:server": "node ../server/server.js",
     "build": "webpack",
     "test": "jest --verbose",
     "test:watch": "jest --verbose --watchAll -i"
@@ -22,6 +24,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.5.0",
     "mini-css-extract-plugin": "^0.4.5",
+    "npm-run-all": "^4.1.5",
     "raf": "^3.4.1",
     "ts-jest": "^24.0.1",
     "ts-loader": "^5.3.1",
