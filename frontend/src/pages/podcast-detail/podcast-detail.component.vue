@@ -5,7 +5,7 @@
     </div>
     <div :class="$style.podcastDetail">
       <div v-for="episode in podcast.episodes" v-bind:key="episode.id">
-        <div>{{ episode.title }} - {{ episode.isoDate }} - {{ episode.enclosure.length }}</div>
+        <div>{{ episode.title }} - {{ episode.isoDate }} - {{ episode.enclosure.length }} {{ episode.content }}</div>
       </div>
     </div>
   </div>

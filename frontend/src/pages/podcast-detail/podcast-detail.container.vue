@@ -1,6 +1,9 @@
 
 <template>
-  <podcast-detail-component v-if="podcast !== {}" :podcast="podcast"/>
+  <div>
+    <div v-if="loading">Loading...</div>
+    <podcast-detail-component v-if="!loading && podcast !== {}" :podcast="podcast"/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -14,13 +17,15 @@ export default Vue.extend({
     PodcastDetailComponent
   },
   data: () => ({
+    loading: true,
     podcast: {} as ViewModel.Podcast
   }),
   props: {
     id: {} as PropOptions<number>
   },
-  created() {    
-    getPodcastDetail(this.id)().then(podcast => {      
+  created() {
+    getPodcastDetail(this.id)().then(podcast => {
+      this.loading = false;
       this.podcast = podcast;
     });
   }
