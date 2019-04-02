@@ -4,8 +4,10 @@
     <div :class="$style.cardHeader">
       <img :src="podcast.image" :class="$style.cardImage">
     </div>
+    <div :class="$style.divider"/>
     <p :class="$style.cardTitle">{{ podcast.title }}</p>
     <p :class="$style.cardAuthor">by {{ podcast.author }}</p>
+    <div :class="$style.divider"/>
     <div :class="$style.description">
       <span>Description:</span>
       <div>{{ podcast.description }}</div>
@@ -38,12 +40,14 @@ export default Vue.extend({
   cursor: pointer;
   overflow: hidden;
 }
-
-.cardHeader {
-  text-align: center;
+.divider {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
+}
+
+.cardHeader {
+  text-align: center;
 }
 
 .cardTitle {
@@ -54,10 +58,6 @@ export default Vue.extend({
 
 .cardAuthor {
   font-style: italic;
-  margin-bottom: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
 }
 
 .cardImage {
