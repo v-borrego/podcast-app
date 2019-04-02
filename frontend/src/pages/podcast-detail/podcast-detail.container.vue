@@ -19,10 +19,8 @@ export default Vue.extend({
   props: {
     id: {} as PropOptions<number>
   },
-  created() {
-    console.log("created", this.id);
-    getPodcastDetail(this.id)().then(podcast => {
-      console.log("loaded", podcast);
+  created() {    
+    getPodcastDetail(this.id)().then(podcast => {      
       this.podcast = podcast;
     });
   }

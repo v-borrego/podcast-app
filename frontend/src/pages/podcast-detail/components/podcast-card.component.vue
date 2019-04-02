@@ -1,9 +1,15 @@
 
 <template>
   <div :class="$style.card" v-on:click="$emit('click', $event)">
-    <img :src="podcast.image" :class="$style.cardImage">
+    <div :class="$style.cardHeader">
+      <img :src="podcast.image" :class="$style.cardImage">
+    </div>
     <p :class="$style.cardTitle">{{ podcast.title }}</p>
-    <p :class="$style.cardAuthor">Author: {{ podcast.author }}</p>
+    <p :class="$style.cardAuthor">by {{ podcast.author }}</p>
+    <div :class="$style.description">
+      <span>Description:</span>
+      <div>{{ podcast.description }}</div>
+    </div>
   </div>
 </template>
 
@@ -21,7 +27,7 @@ export default Vue.extend({
 
 <style module>
 .card {
-  text-align: center;
+  text-align: left;
   margin: 1rem;
   width: 17rem;
   padding: 1rem;
@@ -30,22 +36,36 @@ export default Vue.extend({
   box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
   margin-bottom: 8rem;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .cardTitle {
-  margin: 1rem;
+  font-weight: bold;
   text-transform: uppercase;
+  margin-bottom: 0.5rem;
 }
 
 .cardAuthor {
-  margin: 1rem;
-  color: #999;
+  font-style: italic;
+  margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .cardImage {
-  border-radius: 50%;
-  margin-top: -30%;
+  margin: auto;
   width: 170px;
-  height: 170px;
+}
+
+.description {
+  text-align: left;
 }
 </style>

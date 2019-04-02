@@ -2,10 +2,12 @@ import axios from "axios";
 import {
   FeedResponse,
   PodcastDetail,
-  PodcastDetailResponse
+  PodcastDetailResponse,
+  PodcastLookupResponse
 } from "./api.model";
 
-const baseUrl = "https://cors-anywhere.herokuapp.com/https://itunes.apple.com/";
+const baseUrl = "https://cors-anywhere.herokuapp.com/https://itunes.apple.com";
+const serverURL = "http://localhost:3050/api/podcast/";
 
 const get = <T>(endpoint: string): Promise<T> => {
   return new Promise((resolve, reject) => {
@@ -22,11 +24,24 @@ const get = <T>(endpoint: string): Promise<T> => {
 };
 
 export const getPodcastsFeed = (): Promise<FeedResponse> => {
-  return get<FeedResponse>("us/rss/toppodcasts/limit=100/genre=1310/json");
+  return get<FeedResponse>("/us/rss/toppodcasts/limit=100/genre=1310/json");
 };
 
-export const getPodcastDetail = (id: number): Promise<PodcastDetail> => {
-  return get<PodcastDetailResponse>(`lookup?id=${id}`).then(
-    response => response.results[0]
-  );
+export const getPodcastDetail = async (id: number): Promise<PodcastDetail> => {
+  try {
+    const res = await axios.get<PodcastLookupResponse>(
+      `${baseUrl}/lookup?id=${id}`
+    );
+
+    const feedURL = res.data.results[0].feedUrl;
+
+    const detail = await axios.get<PodcastDetail>(
+      `${serverURL}?feedURL=${feedURL}`
+    );
+
+    return Promise.resolve(detail.data);
+  } catch (e) {
+    console.log("error!", e);
+    return Promise.reject(e);
+  }
 };
