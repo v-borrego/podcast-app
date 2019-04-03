@@ -1,26 +1,30 @@
 
 <template>
-  <div :class="$style.card" v-on:click="$emit('click', $event)">
-    <div :class="$style.cardHeader">
-      <img :src="podcast.image" :class="$style.cardImage">
+  <card :class="$style.podcastInfo">
+    <div :class="$style.header">
+      <img :src="podcast.image" :class="$style.image">
     </div>
     <div :class="$style.divider"/>
-    <p :class="$style.cardTitle">{{ podcast.title }}</p>
-    <p :class="$style.cardAuthor">by {{ podcast.author }}</p>
+    <p :class="$style.title">{{ podcast.title }}</p>
+    <p :class="$style.author">by {{ podcast.author }}</p>
     <div :class="$style.divider"/>
     <div :class="$style.description">
       <span>Description:</span>
       <div>{{ podcast.description }}</div>
     </div>
-  </div>
+  </card>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { ViewModel } from "../model";
+import Card from "../../../common/components/card.vue";
 
 export default Vue.extend({
   name: "PodcastCard",
+  components: {
+    Card
+  },
   props: {
     podcast: {} as PropOptions<ViewModel.Podcast>
   }
@@ -28,14 +32,11 @@ export default Vue.extend({
 </script>
 
 <style module>
-.card {
+.podcastInfo {
   text-align: left;
   margin: 1rem;
   width: 17rem;
   padding: 1rem;
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
-  -moz-box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
-  box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
   margin-bottom: 8rem;
   cursor: pointer;
   overflow: hidden;
@@ -46,21 +47,21 @@ export default Vue.extend({
   border-bottom: 1px solid #ccc;
 }
 
-.cardHeader {
+.header {
   text-align: center;
 }
 
-.cardTitle {
+.title {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
 
-.cardAuthor {
+.author {
   font-style: italic;
 }
 
-.cardImage {
+.image {
   margin: auto;
   width: 170px;
 }

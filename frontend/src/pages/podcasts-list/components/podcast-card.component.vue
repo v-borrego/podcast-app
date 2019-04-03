@@ -1,18 +1,24 @@
 
 <template>
-  <div :class="$style.card" v-on:click="$emit('click', $event)">
-    <img :src="podcast.image" :class="$style.cardImage">
-    <p :class="$style.cardTitle">{{ podcast.title }}</p>
-    <p :class="$style.cardAuthor">Author: {{ podcast.author }}</p>
-  </div>
+  <card :class="$style.podcast">
+    <div v-on:click="$emit('click', $event)">
+      <img :src="podcast.image" :class="$style.image">
+      <p :class="$style.title">{{ podcast.title }}</p>
+      <p :class="$style.author">Author: {{ podcast.author }}</p>
+    </div>
+  </card>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { ViewModel } from "../model";
+import Card from "../../../common/components/card.vue";
 
 export default Vue.extend({
   name: "PodcastCard",
+  components: {
+    Card
+  },
   props: {
     podcast: {} as PropOptions<ViewModel.Podcast>
   }
@@ -20,29 +26,26 @@ export default Vue.extend({
 </script>
 
 <style module>
-.card {
+.podcast {
   text-align: center;
   margin: 1rem;
   width: 17rem;
   padding: 1rem;
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
-  -moz-box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
-  box-shadow: 0px 0px 5px 2px rgba(179, 179, 179, 1);
   margin-bottom: 8rem;
   cursor: pointer;
 }
 
-.cardTitle {
+.title {
   margin: 1rem;
   text-transform: uppercase;
 }
 
-.cardAuthor {
+.author {
   margin: 1rem;
   color: #999;
 }
 
-.cardImage {
+.image {
   border-radius: 50%;
   margin-top: -30%;
   width: 170px;
