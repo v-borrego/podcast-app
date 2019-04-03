@@ -1,6 +1,7 @@
 import Router, { RouteConfig } from "vue-router";
 import { PodcastsList } from "./pages";
-import { PodcastDetail } from "./pages/podcast-detail";
+import { PodcastDetail } from "./pages";
+import { Episode } from "./pages";
 
 export const moduleRoutes = {
   list: {
@@ -10,6 +11,10 @@ export const moduleRoutes = {
   podcastDetail: {
     name: "podcast-detail",
     path: "/podcast/:id"
+  },
+  episode: {
+    name: "episode",
+    path: "/podcast/:podcastId/episode/:episodeId"
   }
 };
 
@@ -23,6 +28,12 @@ const routes: RouteConfig[] = [
     path: moduleRoutes.podcastDetail.path,
     name: moduleRoutes.podcastDetail.name,
     component: PodcastDetail,
+    props: true
+  },
+  {
+    path: moduleRoutes.episode.path,
+    name: moduleRoutes.episode.name,
+    component: Episode,
     props: true
   }
 ];

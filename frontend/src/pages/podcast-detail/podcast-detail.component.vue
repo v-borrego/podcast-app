@@ -6,7 +6,7 @@
     <div :class="$style.podcastDetail">
       <card :class="$style.episodesCounterCard">Episodes: {{ podcast.episodes.length }}</card>
       <card :class="$style.episodesCard">
-        <table-episodes :episodes="podcast.episodes"/>
+        <table-episodes :episodes="podcast.episodes" :onEpisodeSelected="onEpisodeSelected"/>
       </card>
     </div>
   </div>
@@ -18,6 +18,7 @@ import { ViewModel } from "./model";
 import PodcastCard from "./components/podcast-card.component.vue";
 import TableEpisodes from "./components/table.component.vue";
 import Card from "../../common/components/card.component.vue";
+import { router, moduleRoutes } from "../../router";
 
 export default Vue.extend({
   name: "PodcastDetail",
@@ -27,7 +28,8 @@ export default Vue.extend({
     Card
   },
   props: {
-    podcast: {} as PropOptions<ViewModel.Podcast>
+    podcast: {} as PropOptions<ViewModel.Podcast>,
+    onEpisodeSelected: {} as PropOptions<(episode: ViewModel.Episode) => void>
   }
 });
 </script>

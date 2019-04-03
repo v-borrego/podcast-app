@@ -107,9 +107,6 @@ export interface Podcast {
   };
 }
 
-export interface PodcastDetailResponse {
-  results: PodcastDetail[];
-}
 export interface PodcastLookupResponse {
   results: {
     feedUrl: string;
@@ -124,10 +121,12 @@ export interface PodcastDetail {
 }
 
 export interface Episode {
+  id: string;
   title: string;
   content: string;
   contentSnippet: string;
   link: string;
+  duration: string;
   enclosure: {
     url: string;
     type: string;

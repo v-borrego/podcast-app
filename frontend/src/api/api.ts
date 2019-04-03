@@ -2,7 +2,6 @@ import axios from "axios";
 import {
   FeedResponse,
   PodcastDetail,
-  PodcastDetailResponse,
   PodcastLookupResponse
 } from "./api.model";
 

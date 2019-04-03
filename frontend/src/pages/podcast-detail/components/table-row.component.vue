@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr v-on:click="$emit('click', $event)">
     <td :class="$style.title">
       <span>{{episode.title}}</span>
     </td>
@@ -7,7 +7,7 @@
       <span>{{formatDate(episode.isoDate)}}</span>
     </td>
     <td :class="$style.duration">
-      <span>{{episode.enclosure.length}}</span>
+      <span>{{ episode.duration }}</span>
     </td>
   </tr>
 </template>
@@ -21,14 +21,6 @@ export default Vue.extend({
     episode: {} as PropOptions<ViewModel.Episode>
   },
   methods: {
-    formatDuration: function(milliseconds) {
-      const seconds = milliseconds / 10000;
-      const durationItems = [
-        Math.floor(seconds / 60),
-        seconds - Math.floor(seconds / 60) * 60
-      ];
-      return durationItems.join(":");
-    },
     formatDate: function(stringDate: string) {
       const date = new Date(stringDate);
       const dateItems = [

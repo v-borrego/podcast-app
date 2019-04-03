@@ -8,9 +8,11 @@ export interface Podcast {
 }
 
 export interface Episode {
+  id: string;
   content: string;
   contentSnippet: string;
   isoDate: string;
+  duration: string;
   enclosure: {
     url: string;
     type: string;

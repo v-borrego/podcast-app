@@ -25,11 +25,13 @@ app.use("/api/podcast/", function(req, res) {
 });
 
 const mapItemToEpisode = item => ({
+  id: item.guid,
   title: item.title,
   content: item.content,
   contentSnippet: item.contentSnippet,
   link: item.link,
   enclosure: item.enclosure,
+  duration: item.itunes.duration,
   isoDate: item.isoDate
 });
 

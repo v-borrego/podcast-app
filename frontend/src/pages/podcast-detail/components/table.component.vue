@@ -3,7 +3,11 @@
     <header-component/>
     <tbody>
       <template v-for="episode in episodes">
-        <row-component :key="episode.id" :episode="episode"/>
+        <row-component
+          :key="episode.id"
+          :episode="episode"
+          v-on:click="onEpisodeSelected(episode)"
+        />
       </template>
     </tbody>
   </table>
@@ -11,14 +15,18 @@
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import { ViewModel } from "../model";
+
 import HeaderComponent from "./table-header.component.vue";
 import RowComponent from "./table-row.component.vue";
+import { ViewModel } from "../model";
+import { router, moduleRoutes } from "../../../router";
+
 export default Vue.extend({
   name: "TableComponent",
   components: { HeaderComponent, RowComponent },
   props: {
-    episodes: {} as PropOptions<ViewModel.Episode[]>
+    episodes: {} as PropOptions<ViewModel.Episode[]>,
+    onEpisodeSelected: {} as PropOptions<(episode: ViewModel.Episode) => void>
   }
 });
 </script>

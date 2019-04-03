@@ -9,16 +9,22 @@ export const mapPodcastApiModelToViewModel = (
   title: podcast.title,
   description: podcast.description,
   image: podcast.image,
-  episodes: podcast.episodes.map(episode => ({
-    content: episode.content,
-    contentSnippet: episode.contentSnippet,
-    link: episode.link,
-    title: episode.title,
-    isoDate: episode.isoDate,
-    enclosure: {
-      url: episode.enclosure.url,
-      type: episode.enclosure.type,
-      length: episode.enclosure.length
-    }
-  }))
+  episodes: podcast.episodes.map(mapEpisodeApiModelToViewModel)
+});
+
+const mapEpisodeApiModelToViewModel = (
+  episode: ApiModel.Episode
+): ViewModel.Episode => ({
+  id: episode.id,
+  content: episode.content,
+  contentSnippet: episode.contentSnippet,
+  link: episode.link,
+  title: episode.title,
+  isoDate: episode.isoDate,
+  duration: episode.duration,
+  enclosure: {
+    url: episode.enclosure.url,
+    type: episode.enclosure.type,
+    length: episode.enclosure.length
+  }
 });
