@@ -3,12 +3,9 @@
   <div>
     <filter-bar :searchText="searchText" :onSearch="onSearch" :resultsCount="filteredList.length"/>
     <div :class="$style.flexContainer">
-      <podcast-card
-        v-for="podcast in filteredList"
-        v-bind:key="podcast.id"
-        :podcast="podcast"
-        v-on:click="onSelect(podcast)"
-      />
+      <template v-for="podcast in filteredList">
+        <podcast-card v-bind:key="podcast.id" :podcast="podcast" v-on:click="onSelect(podcast)"/>
+      </template>
     </div>
   </div>
 </template>

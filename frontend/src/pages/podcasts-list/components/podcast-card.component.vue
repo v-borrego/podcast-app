@@ -12,7 +12,7 @@
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { ViewModel } from "../model";
-import Card from "../../../common/components/card.vue";
+import Card from "../../../common/components/card.component.vue";
 
 export default Vue.extend({
   name: "PodcastCard",

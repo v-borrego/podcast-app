@@ -9,7 +9,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "Card"
+  name: "CardComponent"
 });
 </script>
 

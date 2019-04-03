@@ -1,5 +1,3 @@
-import { Episode } from "../../../api/api.model";
-
 export interface Podcast {
   id: number;
   author: string;

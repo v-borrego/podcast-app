@@ -18,7 +18,7 @@
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { ViewModel } from "../model";
-import Card from "../../../common/components/card.vue";
+import Card from "../../../common/components/card.component.vue";
 
 export default Vue.extend({
   name: "PodcastCard",
@@ -34,8 +34,6 @@ export default Vue.extend({
 <style module>
 .podcastInfo {
   text-align: left;
-  margin: 1rem;
-  width: 17rem;
   padding: 1rem;
   margin-bottom: 8rem;
   cursor: pointer;

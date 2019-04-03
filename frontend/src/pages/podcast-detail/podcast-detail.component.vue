@@ -4,9 +4,10 @@
       <podcast-card :podcast="podcast"/>
     </div>
     <div :class="$style.podcastDetail">
-      <div v-for="episode in podcast.episodes" v-bind:key="episode.id">
-        <div>{{ episode.title }} - {{ episode.isoDate }} - {{ episode.enclosure.length }} {{ episode.content }}</div>
-      </div>
+      <card :class="$style.episodesCounterCard">Episodes: {{ podcast.episodes.length }}</card>
+      <card :class="$style.episodesCard">
+        <table-episodes :episodes="podcast.episodes"/>
+      </card>
     </div>
   </div>
 </template>
@@ -15,11 +16,15 @@
 import Vue, { PropOptions } from "vue";
 import { ViewModel } from "./model";
 import PodcastCard from "./components/podcast-card.component.vue";
+import TableEpisodes from "./components/table.component.vue";
+import Card from "../../common/components/card.component.vue";
 
 export default Vue.extend({
   name: "PodcastDetail",
   components: {
-    PodcastCard
+    PodcastCard,
+    TableEpisodes,
+    Card
   },
   props: {
     podcast: {} as PropOptions<ViewModel.Podcast>
@@ -34,11 +39,24 @@ export default Vue.extend({
 }
 
 .podcastCard {
-  width: 380px;
+  margin: 1rem;
+  width: 19rem;
 }
 
 .podcastDetail {
   flex-grow: 1;
   min-width: 400px;
+}
+
+.episodes-counter-card {
+  font-weight: bold;
+  font-size: 150%;
+  margin: 1rem;
+  padding: 1rem;
+}
+.episodes-card {
+  overflow: hidden;
+  margin: 1rem;
+  padding: 1rem;
 }
 </style>
