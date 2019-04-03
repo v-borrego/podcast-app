@@ -8,7 +8,14 @@ La carpeta "server" contiene un pequeño servidor express que gestiona las petic
 
 ## Ejecutar la aplicación
 
-Para arrancar la aplicación se debe ejecutar el siguiente comando dentro de la carpeta de frontend:
+### 1. Instalar las librerías
+Para instalar las librerías necesarias ejecutaremos el comando "npm install" en cada una de las carpetas (server y frontend).
+
+```bash
+npm install
+```
+### 2. Lanzar las aplicaciones
+Para arrancar la aplicación de frontend junto con el servidor, se debe ejecutar el siguiente comando dentro de la carpeta de frontend:
 
 ```bash
 npm start
