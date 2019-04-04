@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.flexContainer">
-    <div :class="$style.podcastCard">
+  <div :class="$style.gridContainer">
+    <div :class="$style.podcastInfo">
       <podcast-card :podcast="podcast"/>
     </div>
     <div :class="$style.podcastDetail">
@@ -39,18 +39,19 @@ export default Vue.extend({
 </script>
 
 <style module>
-.flexContainer {
-  display: flex;
-  flex-direction: row;
+.grid-container {
+  display: grid;
+  grid-template-areas: "podcastArea detailArea";
+  grid-template-columns: 20rem auto;
 }
 
-.podcastCard {
+.podcast-info {
+  grid-area: "podcastArea";
   margin: 1rem;
-  width: 19rem;
 }
 
-.podcastDetail {
-  flex-grow: 1;
+.podcast-detail {
+  grid-area: "detailArea";
 }
 
 .episodes-counter-card {
