@@ -1,15 +1,15 @@
 <template>
-  <div :class="$style.gridContainer">
-    <div :class="$style.podcastInfo">
+  <info-detail-layout>
+    <template v-slot:info>
       <podcast-card :podcast="podcast"/>
-    </div>
-    <div :class="$style.podcastDetail">
+    </template>
+    <template v-slot:detail>
       <card :class="$style.episodesCounterCard">Episodes: {{ podcast.episodes.length }}</card>
       <card :class="$style.episodesCard">
         <table-episodes :episodes="podcast.episodes" :onEpisodeSelected="onEpisodeSelected"/>
       </card>
-    </div>
-  </div>
+    </template>
+  </info-detail-layout>
 </template>
 
 <script lang="ts">
@@ -18,6 +18,7 @@ import * as ViewModel from "./podcast-detail.model";
 import PodcastCard from "../../common/components/podcast-card.component.vue";
 import TableEpisodes from "./components/table.component.vue";
 import Card from "../../common/components/card.component.vue";
+import InfoDetailLayout from "../../layouts/info-detail.layout.vue";
 import { router, moduleRoutes } from "../../router";
 
 export default Vue.extend({
@@ -25,7 +26,8 @@ export default Vue.extend({
   components: {
     PodcastCard,
     TableEpisodes,
-    Card
+    Card,
+    InfoDetailLayout
   },
   props: {
     podcast: {} as PropOptions<ViewModel.Podcast>,
@@ -35,21 +37,6 @@ export default Vue.extend({
 </script>
 
 <style module>
-.grid-container {
-  display: grid;
-  grid-template-areas: "podcastArea detailArea";
-  grid-template-columns: 20rem auto;
-}
-
-.podcast-info {
-  grid-area: "podcastArea";
-  margin: 1rem;
-}
-
-.podcast-detail {
-  grid-area: "detailArea";
-}
-
 .episodes-counter-card {
   font-weight: bold;
   font-size: 150%;
