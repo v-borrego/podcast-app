@@ -14,7 +14,7 @@
 import Vue, { PropOptions } from "vue";
 import PodcastDetailComponent from "./podcast-detail.component.vue";
 import { getPodcastDetail } from "./api-bridge";
-import { ViewModel } from "./model";
+import * as ViewModel from "./podcast-detail.model";
 import { router, moduleRoutes } from "../../router";
 export default Vue.extend({
   name: "PodcastDetail",

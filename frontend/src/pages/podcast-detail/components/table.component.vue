@@ -18,7 +18,7 @@ import Vue, { PropOptions } from "vue";
 
 import HeaderComponent from "./table-header.component.vue";
 import RowComponent from "./table-row.component.vue";
-import { ViewModel } from "../model";
+import * as ViewModel from "../podcast-detail.model";
 import { router, moduleRoutes } from "../../../router";
 
 export default Vue.extend({

@@ -4,9 +4,14 @@
       <podcast-card :podcast="podcast"/>
     </div>
     <div :class="$style.podcastDetail">
-      <card :class="$style.episodesCounterCard">Episodes: {{ podcast.episodes.length }}</card>
       <card :class="$style.episodesCard">
-        <table-episodes :episodes="podcast.episodes" :onEpisodeSelected="onEpisodeSelected"/>
+        <h1>{{ episode.title }}</h1>
+        <p v-html="episode.content"/>
+        <p>
+          <audio :src="episode.enclosure.url" controls autoplay loop>
+            <p>Media not supported</p>
+          </audio>
+        </p>
       </card>
     </div>
   </div>
@@ -14,22 +19,21 @@
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import * as ViewModel from "./podcast-detail.model";
+import * as ViewModel from "./episode.model";
 import PodcastCard from "../../common/components/podcast-card.component.vue";
-import TableEpisodes from "./components/table.component.vue";
+
 import Card from "../../common/components/card.component.vue";
 import { router, moduleRoutes } from "../../router";
 
 export default Vue.extend({
-  name: "PodcastDetail",
+  name: "Episode",
   components: {
     PodcastCard,
-    TableEpisodes,
     Card
   },
   props: {
     podcast: {} as PropOptions<ViewModel.Podcast>,
-    onEpisodeSelected: {} as PropOptions<(episode: ViewModel.Episode) => void>
+    episode: {} as PropOptions<ViewModel.Podcast>
   }
 });
 </script>
@@ -47,7 +51,6 @@ export default Vue.extend({
 
 .podcastDetail {
   flex-grow: 1;
-  min-width: 400px;
 }
 
 .episodes-counter-card {
@@ -60,5 +63,6 @@ export default Vue.extend({
   overflow: hidden;
   margin: 1rem;
   padding: 1rem;
+  flex-grow: 1;
 }
 </style>

@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import { ViewModel } from "../model";
+import * as ViewModel from "../podcast-detail.model";
 export default Vue.extend({
   name: "RowComponent",
   props: {

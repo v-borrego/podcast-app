@@ -1,22 +1,28 @@
 import { ApiModel } from "../../api";
-import * as ViewModel from "./podcast-detail.model";
+import * as ViewModel from "./episode.model";
 
 export const mapPodcastApiModelToViewModel = (
-  podcast: ApiModel.PodcastDetail
+  podcast: ApiModel.PodcastDetail,
+  episodeId: string
 ): ViewModel.Podcast => ({
-  id: 0,
+  image: podcast.image,
   author: podcast.author,
   title: podcast.title,
   description: podcast.description,
-  image: podcast.image,
-  episodes: podcast.episodes.map(mapEpisodeApiModelToViewModel)
+  episode: podcast.episodes
+    .map(mapEpisodeApiModelToViewModel)
+    .find(episode => episode.id === episodeId)
 });
 
 const mapEpisodeApiModelToViewModel = (
   episode: ApiModel.Episode
 ): ViewModel.Episode => ({
   id: episode.id,
+  content: episode.content,
   title: episode.title,
   isoDate: episode.isoDate,
-  duration: episode.duration
+  duration: episode.duration,
+  enclosure: {
+    url: episode.enclosure.url
+  }
 });

@@ -17,8 +17,8 @@
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import { ViewModel } from "../model";
-import Card from "../../../common/components/card.component.vue";
+import * as ViewModel from "./podcast-card.model";
+import Card from "./card.component.vue";
 
 export default Vue.extend({
   name: "PodcastCard",
