@@ -41,7 +41,7 @@ export default Vue.extend({
     }
   },
   created() {
-    getPodcastDetail(this.id)()
+    getPodcastDetail(this.id)
       .then(podcast => {
         this.loading = false;
         this.podcast = podcast;

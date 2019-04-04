@@ -19,7 +19,7 @@ export default Vue.extend({
     router.beforeEach((to: Route, from: Route, next) => {
       console.log(`Navigation from ${from.path} to ${to.path} started`);
       this.navigating = true;
-      setTimeout(next, 200);
+      next();
     });
     router.afterEach((to: Route, from: Route) => {
       console.log(`Navigation from ${from.path} to ${to.path} completed`);
