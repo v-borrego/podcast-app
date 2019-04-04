@@ -1,5 +1,5 @@
 import { ApiModel } from "../../api";
-import { ViewModel } from "./model";
+import * as ViewModel from "./podcasts-list.model";
 import { mapPodcastApiModelToViewModel } from "./podcasts-list.mapper";
 
 describe("Podcasts list mappers tests", () => {

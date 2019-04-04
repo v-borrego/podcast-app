@@ -6,7 +6,7 @@
 import Vue from "vue";
 import PodcastsListComponent from "./podcasts-list.component.vue";
 import { getPodcastsList } from "./api-bridge";
-import { ViewModel } from "./model";
+import * as ViewModel  from "./podcasts-list.model";
 import { mapPodcastApiModelToViewModel } from "./podcasts-list.mapper";
 
 export default Vue.extend({

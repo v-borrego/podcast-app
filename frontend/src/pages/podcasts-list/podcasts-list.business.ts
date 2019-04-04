@@ -1,4 +1,4 @@
-import { ViewModel } from "./model";
+import * as ViewModel from "./podcasts-list.model";
 
 export const filterPodcasts = (
   podcasts: ViewModel.Podcast[],

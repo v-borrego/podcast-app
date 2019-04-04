@@ -1,5 +1,5 @@
 import { ApiModel } from "../../api";
-import { ViewModel } from "./model";
+import * as ViewModel from "./podcasts-list.model";
 
 const emptyImage = {
   label: "",

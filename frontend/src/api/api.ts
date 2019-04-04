@@ -5,7 +5,6 @@ import {
   PodcastLookupResponse
 } from "./api.model";
 import { globalCache, CACHE_MINUTES_EXPIRE } from "./cache";
-import { Podcast } from "../pages/podcasts-list/model/podcasts-list.model";
 
 const baseUrl = "https://cors-anywhere.herokuapp.com/https://itunes.apple.com";
 const serverURL = "http://localhost:3050/api/podcast/";

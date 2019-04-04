@@ -1,5 +1,4 @@
-import { ApiModel } from "../../api";
-import { ViewModel } from "./model";
+import * as ViewModel from "./podcasts-list.model";
 import { filterPodcasts } from "./podcasts-list.business";
 import { mapPodcastApiModelToViewModel } from "./podcasts-list.mapper";
 

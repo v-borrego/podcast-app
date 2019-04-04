@@ -14,7 +14,7 @@
 import Vue, { PropOptions } from "vue";
 import { FilterBar } from "./components";
 import { PodcastCard } from "./components";
-import { ViewModel } from "./model";
+import * as ViewModel from "./podcasts-list.model";
 import { router, moduleRoutes } from "../../router";
 import { filterPodcasts } from "./podcasts-list.business";
 
