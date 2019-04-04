@@ -35,7 +35,6 @@ export default Vue.extend({
 .podcastInfo {
   text-align: left;
   padding: 1rem;
-  margin-bottom: 8rem;
   cursor: pointer;
   overflow: hidden;
 }
