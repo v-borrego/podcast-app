@@ -47,7 +47,7 @@ export default Vue.extend({
   overflow: hidden;
   margin: 1rem;
   padding: 1rem;
-  height: calc(100vh - 9rem);
+  height: calc(100vh - 13rem);
   overflow-y: auto;
 }
 </style>

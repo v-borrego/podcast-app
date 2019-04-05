@@ -46,6 +46,7 @@ export default Vue.extend({
   margin: 1rem;
   padding: 1rem;
 }
+
 .episodes-card {
   overflow: hidden;
   margin: 1rem;

@@ -13,6 +13,7 @@ import { getEpisode } from "./api-bridge";
 import * as ViewModel from "./episode.model";
 import { router } from "../../router";
 import EpisodeComponent from "./episode.component.vue";
+import { store } from "../../main";
 
 export default Vue.extend({
   name: "EpisodeContainer",
@@ -34,12 +35,13 @@ export default Vue.extend({
     this.loading = true;
     getEpisode(this.podcastId, this.episodeId)
       .then(podcast => {
+        store.commit("navigationCompleted");
         this.loading = false;
         this.podcast = podcast;
         this.episode = podcast.episode;
       })
       .catch(e => {
-        console.log("podcast app error", e);
+        store.commit("navigationCompleted");
         router.go(-1);
       });
   }

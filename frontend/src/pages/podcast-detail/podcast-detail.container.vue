@@ -1,12 +1,7 @@
 
 <template>
-  <div>
-    <div v-if="loading">Loading...</div>
-    <podcast-detail-component
-      v-if="!loading && podcast !== {}"
-      :podcast="podcast"
-      :onEpisodeSelected="onEpisodeSelected"
-    />
+  <div v-if="!loading && podcast !== {}">
+    <podcast-detail-component :podcast="podcast" :onEpisodeSelected="onEpisodeSelected"/>
   </div>
 </template>
 
@@ -16,13 +11,14 @@ import PodcastDetailComponent from "./podcast-detail.component.vue";
 import { getPodcastDetail } from "./api-bridge";
 import * as ViewModel from "./podcast-detail.model";
 import { router, moduleRoutes } from "../../router";
+import { store } from "../../main";
 export default Vue.extend({
   name: "PodcastDetail",
   components: {
     PodcastDetailComponent
   },
   data: () => ({
-    loading: true,
+    loading: false,
     podcast: {} as ViewModel.Podcast
   }),
   props: {
@@ -41,12 +37,15 @@ export default Vue.extend({
     }
   },
   created() {
+    this.loading = true;
     getPodcastDetail(this.id)
       .then(podcast => {
         this.loading = false;
+        store.commit("navigationCompleted");
         this.podcast = podcast;
       })
       .catch(e => {
+        store.commit("navigationCompleted");
         router.go(-1);
       });
   }

@@ -1,29 +1,30 @@
 <template>
-  <div>
-    <div v-if="navigating">Navigating...</div>
+  <app-layout :navigating="navigating">
     <router-view/>
-  </div>
+  </app-layout>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { router } from "./router";
 import { Route } from "vue-router";
+import { store } from "./main";
+import AppLayout from "./layouts/app.layout.vue";
 
 export default Vue.extend({
   name: "App",
-  data: () => ({
-    navigating: false
-  }),
+  components: {
+    AppLayout
+  },
+  computed: {
+    navigating() {
+      return store.state.navigating;
+    }
+  },
   created() {
     router.beforeEach((to: Route, from: Route, next) => {
-      console.log(`Navigation from ${from.path} to ${to.path} started`);
-      this.navigating = true;
+      store.commit("navigationStart");
       next();
-    });
-    router.afterEach((to: Route, from: Route) => {
-      console.log(`Navigation from ${from.path} to ${to.path} completed`);
-      this.navigating = false;
     });
   }
 });
