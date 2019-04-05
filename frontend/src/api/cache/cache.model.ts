@@ -1,4 +1,4 @@
-import { FeedResponse, PodcastDetail } from "../api.model";
+import { Podcast, PodcastDetail } from "../api.model";
 
 export interface Cache<T> {
   [propName: string]: CacheItem<T>;
@@ -10,7 +10,7 @@ export interface CacheItem<T> {
 }
 
 export interface GlobalCache {
-  list: CacheItem<FeedResponse>;
+  list: CacheItem<Podcast[]>;
   podcasts: {
     [podcastKey: number]: CacheItem<PodcastDetail>;
   };
