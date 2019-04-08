@@ -8,9 +8,9 @@
     <p :class="$style.title">{{ podcast.title }}</p>
     <p :class="$style.author">by {{ podcast.author }}</p>
     <div :class="$style.divider"/>
-    <div :class="$style.description">
-      <span>Description:</span>
-      <div>{{ podcast.description }}</div>
+    <div :class="$style.description" v-if="podcast.description">
+      <div :class="$style.descriptionTitle">Description:</div>
+      <div>{{ podcast.description.trim() }}</div>
     </div>
   </card>
 </template>
@@ -60,6 +60,11 @@ export default Vue.extend({
 .image {
   margin: auto;
   width: 170px;
+}
+
+.description-title {
+  font-weight: bold;
+  margin-bottom: 0.8rem;
 }
 
 .description {
