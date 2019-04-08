@@ -1,9 +1,9 @@
-import * as ViewModel from "./podcasts-list.model";
+import { Podcast } from "./podcasts-list.model";
 
 export const filterPodcasts = (
-  podcasts: ViewModel.Podcast[],
+  podcasts: Podcast[],
   searchText: string
-): ViewModel.Podcast[] =>
+): Podcast[] =>
   podcasts.filter(
     podcast =>
       podcast.title.toUpperCase().includes(searchText.toUpperCase()) ||

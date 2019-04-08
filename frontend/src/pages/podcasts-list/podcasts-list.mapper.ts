@@ -1,13 +1,6 @@
 import { ApiModel } from "../../api";
 import * as ViewModel from "./podcasts-list.model";
 
-const emptyImage = {
-  label: "",
-  attributes: {
-    height: "0"
-  }
-};
-
 export const mapPodcastApiModelToViewModel = (
   podcast: ApiModel.Podcast
 ): ViewModel.Podcast => ({
@@ -16,9 +9,11 @@ export const mapPodcastApiModelToViewModel = (
   title: podcast.title,
   image: podcast.images.reduce(
     (img, current) =>
-      parseInt(current.attributes.height) > parseInt(img.attributes.height)
-        ? current
-        : img,
-    emptyImage
+      img
+        ? parseInt(current.attributes.height) > parseInt(img.attributes.height)
+          ? current
+          : img
+        : current,
+    null
   ).label
 });
