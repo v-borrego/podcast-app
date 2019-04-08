@@ -22,3 +22,15 @@ npm start
 ```
 
 El script de start de la aplicación de frontend está preparado para levantar el servidor express que servirá las peticiones de RSS del detalle de los podcast.
+
+## Generar build de frontend
+Para generar los bundles de frontend, una vez instalada las dependencias de las librerías con el comando "npm install", se puede utilizar el script "build":
+
+```bash
+npm run build
+```
+Se utiliza el plugin BundleAnalyzer para generar un report con el tamaño de las librerías implicadas en los bundles finales. Para esto se debe ejecutar el script "bundle:report" y abrir el fichero html que se genera dentro de la carpeta "dist/report".
+
+```bash
+npm run build:report
+```
