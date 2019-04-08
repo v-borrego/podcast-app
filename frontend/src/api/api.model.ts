@@ -23,12 +23,11 @@ export interface Episode {
   title: string;
   content: string;
   contentSnippet: string;
-  link: string;
   duration: string;
   enclosure: {
     url: string;
     type: string;
-    length: number;
+    length: string;
   };
   isoDate: string;
 }

@@ -26,8 +26,8 @@ export default Vue.extend({
   data: function() {
     return {
       loading: false,
-      episode: {} as ViewModel.Episode | undefined,
-      podcast: {} as ViewModel.Podcast | undefined
+      episode: {} as ViewModel.Episode,
+      podcast: {} as ViewModel.Podcast
     };
   },
   created() {
