@@ -21,6 +21,11 @@ Para arrancar la aplicación de frontend junto con el servidor, se debe ejecutar
 npm start
 ```
 
+Para ejecutarlas en modo producción se utilizará el script "start:prod":
+```bash
+npm run start:prod
+```
+
 El script de start de la aplicación de frontend está preparado para levantar en localhost el servidor express en el puerto 3050, y la propia aplicación de frontend en el puerto 8555.
 
 ## Generar build de frontend
