@@ -9,7 +9,7 @@ const { BaseHrefWebpackPlugin } = require("base-href-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 
-module.exports = env => ({
+module.exports = (env = {}) => ({
   context: path.join(basePath, "src"),
   resolve: {
     extensions: [".js", ".ts", ".vue"],
@@ -118,12 +118,13 @@ module.exports = env => ({
       vue: true
     }),
     new VueLoaderPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: "static",
-      openAnalyzer: false,
-      generateStatsFile: true,
-      reportFilename: "report/report.html",
-      statsFilename: "report/stats.json"
-    })
-  ]
+    env.report &&
+      new BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        openAnalyzer: false,
+        generateStatsFile: true,
+        reportFilename: "report/report.html",
+        statsFilename: "report/stats.json"
+      })
+  ].filter(p => p)
 });

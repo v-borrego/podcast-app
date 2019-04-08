@@ -26,7 +26,6 @@ export default Vue.extend({
   },
   methods: {
     onEpisodeSelected: function(episode: ViewModel.Episode) {
-      console.log("onEpisodeSelected", episode);
       router.push({
         name: moduleRoutes.episode.name,
         params: {

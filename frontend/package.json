@@ -5,10 +5,10 @@
   "main": "main.js",
   "scripts": {
     "start": "run-p start:server start:dev",
-    "start:dev": "webpack-dev-server --config  webpack.dev.js",
-    "build:report": "npm run build --env.report --config webpack.prod.js",
+    "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "build:report": "webpack --config webpack.prod.js --env.report",
     "start:server": "node ../server/server.js",
-    "build": "webpack --config  webpack.prod.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "jest --verbose",
     "test:watch": "jest --verbose --watchAll -i"
   },
