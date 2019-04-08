@@ -5,10 +5,10 @@
     </template>
     <template v-slot:detail>
       <card :class="$style.episodesCard">
-        <h1>{{ episode.title }}</h1>
-        <p v-html="episode.content"/>
+        <div :class="$style.episodeTitle">{{ episode.title }}</div>
+        <p v-html="episode.content" :class="$style.episodeContent"/>
         <p>
-          <audio :src="episode.enclosure.url" controls autoplay loop>
+          <audio :src="episode.enclosure.url" controls autoplay loop :class="$style.episodeAudio">
             <p>Media not supported</p>
           </audio>
         </p>
@@ -40,6 +40,10 @@ export default Vue.extend({
 </script>
 
 <style module>
+.episode-title {
+  font-size: 125%;
+  margin: 1rem 0;
+}
 .episodes-counter-card {
   font-weight: bold;
   font-size: 150%;
@@ -52,5 +56,13 @@ export default Vue.extend({
   margin: 1rem;
   padding: 1rem;
   flex-grow: 1;
+}
+
+.episode-content {
+  margin: 1rem 0;
+}
+
+.episode-audio {
+  width: 100%;
 }
 </style>

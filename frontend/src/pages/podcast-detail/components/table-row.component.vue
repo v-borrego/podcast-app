@@ -1,5 +1,5 @@
 <template>
-  <tr v-on:click="$emit('click', $event)">
+  <tr v-on:click="$emit('click', $event)" :class="$style.episodeRow">
     <td :class="$style.title">
       <span>{{episode.title}}</span>
     </td>
@@ -35,7 +35,12 @@ export default Vue.extend({
 </script>
 
 <style module>
+.episode-row {
+  cursor: pointer;
+}
+
 .title {
+  color: steelblue;
   padding: 0.5rem;
   width: 25%;
   max-width: 40rem;

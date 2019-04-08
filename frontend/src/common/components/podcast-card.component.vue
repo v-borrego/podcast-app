@@ -35,7 +35,6 @@ export default Vue.extend({
 .podcastInfo {
   text-align: left;
   padding: 1rem;
-  cursor: pointer;
   overflow: hidden;
 }
 .divider {
@@ -65,5 +64,6 @@ export default Vue.extend({
 
 .description {
   text-align: left;
+  padding-top: 1rem;
 }
 </style>

@@ -6,8 +6,10 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const basePath = __dirname;
 const { BaseHrefWebpackPlugin } = require("base-href-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
-module.exports = {
+module.exports = env => ({
   context: path.join(basePath, "src"),
   resolve: {
     extensions: [".js", ".ts", ".vue"],
@@ -18,7 +20,7 @@ module.exports = {
   mode: "development",
   entry: {
     app: "./main.ts",
-    vendor: ["vue", "vue-router"]
+    vendor: ["vue", "vue-router", "vuex"]
   },
   output: {
     path: path.join(basePath, "dist"),
@@ -35,10 +37,6 @@ module.exports = {
         }
       }
     }
-  },
-  devServer: {
-    port: 8555,
-    historyApiFallback: true
   },
   module: {
     rules: [
@@ -119,6 +117,13 @@ module.exports = {
       tsconfig: path.join(__dirname, "./tsconfig.json"),
       vue: true
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      openAnalyzer: false,
+      generateStatsFile: true,
+      reportFilename: "report/report.html",
+      statsFilename: "report/stats.json"
+    })
   ]
-};
+});

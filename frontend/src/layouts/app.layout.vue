@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.flexContainer">
     <div :class="$style.appHeader">
-      <div :class="$style.appTitle">Podcaster</div>
+      <div :class="$style.appTitle" v-on:click="onTitleClick">Podcaster</div>
       <div :class="$style.navigationIcon" v-if="navigating"/>
     </div>
     <slot/>
@@ -9,11 +9,19 @@
 </template>
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
+import { router, moduleRoutes } from "../router";
 
 export default Vue.extend({
   name: "AppLayout",
   props: {
     navigating: {} as PropOptions<boolean>
+  },
+  methods: {
+    onTitleClick: function() {
+      router.push({
+        name: moduleRoutes.list.name
+      });
+    }
   }
 });
 </script>
@@ -34,6 +42,7 @@ export default Vue.extend({
 .app-title {
   font-size: 140%;
   color: steelblue;
+  cursor: pointer;
 }
 
 .navigation-icon {
