@@ -5,7 +5,6 @@ const requestPodcast = function(req, res) {
   const url = `https://itunes.apple.com/lookup?id=${req.query.id}`;
 
   Axios.get(url).then(response => {
-    // res.send(response.data.results[0].feedUrl);
     requestPodcastFeed(res, response.data.results[0].feedUrl);
   });
 };
