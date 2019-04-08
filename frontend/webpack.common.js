@@ -121,7 +121,7 @@ module.exports = (env = {}) => ({
     env.report &&
       new BundleAnalyzerPlugin({
         analyzerMode: "static",
-        openAnalyzer: false,
+        openAnalyzer: true,
         generateStatsFile: true,
         reportFilename: "report/report.html",
         statsFilename: "report/stats.json"
