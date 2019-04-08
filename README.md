@@ -9,7 +9,7 @@ La carpeta "server" contiene un pequeño servidor express que gestiona las petic
 ## Ejecutar la aplicación
 
 ### 1. Instalar las librerías
-Para instalar las librerías necesarias es necesario ejecutar el comando "npm install" en cada una de las carpetas (server y frontend).
+Para instalar las librerías es necesario ejecutar el comando "npm install" en cada una de las carpetas (server y frontend).
 
 ```bash
 npm install
