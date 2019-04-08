@@ -21,7 +21,7 @@ Para arrancar la aplicación de frontend junto con el servidor, se debe ejecutar
 npm start
 ```
 
-El script de start de la aplicación de frontend está preparado para levantar el servidor express que servirá las peticiones de RSS del detalle de los podcast.
+El script de start de la aplicación de frontend está preparado para levantar en localhost el servidor express en el puerto 3050, y la propia aplicación de frontend en el puerto 8555.
 
 ## Generar build de frontend
 Para generar los bundles de frontend, una vez instalada las dependencias de las librerías con el comando "npm install", se puede utilizar el script "build":
