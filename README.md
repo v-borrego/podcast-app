@@ -4,7 +4,7 @@ El repositorio contiene dos carpetas, "server" y "frontend".
 
 La carpeta "frontend" contiene la aplicación cliente en Vue.js.
 
-La carpeta "server" contiene un pequeño servidor express que gestiona las peticiones al rss de cada podcast para realizar la conversión a JSON y servirla a la aplicación de frontend.
+La carpeta "server" contiene un pequeño servidor express que gestiona las peticiones a las api y rss de itunes, actuando de puente entre la aplicación de frontend y las URL de itunes, para tratar los datos y servirlos en formato json con la información necesaria.
 
 ## Ejecutar la aplicación
 
