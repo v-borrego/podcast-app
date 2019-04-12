@@ -6,6 +6,7 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const basePath = __dirname;
 const { BaseHrefWebpackPlugin } = require("base-href-webpack-plugin");
+const BrotliGzipPlugin = require("brotli-gzip-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 
@@ -107,6 +108,21 @@ module.exports = (env = {}) => ({
       filename: "index.html",
       template: "index.html",
       alwaysWriteToDisk: true
+    }),
+    new BrotliGzipPlugin({
+      asset: "[path].br[query]",
+      algorithm: "brotli",
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8,
+      quality: 11
+    }),
+    new BrotliGzipPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8
     }),
     new BaseHrefWebpackPlugin({ baseHref: "/" }),
     new webpack.HashedModuleIdsPlugin(),
