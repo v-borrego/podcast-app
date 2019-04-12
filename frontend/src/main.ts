@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 
-import App from "./App.vue";
+import App from "./app.vue";
 import { router } from "./router";
 import "./assets/css/global-style.css";
 
